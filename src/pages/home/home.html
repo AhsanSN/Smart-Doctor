@@ -1,0 +1,30 @@
+<ion-header  color="dark">
+  <ion-navbar>
+    <ion-title>
+      Smart Doctor
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="login()">
+          <ion-label>Sympotoms</ion-label>
+          <ion-select  [(ngModel)]="form" name="form" multiple="true" >
+            <div *ngFor="let user of form" >
+                <ion-option value="{{user.val}}">{{user.val}}</ion-option>
+            </div>
+          </ion-select>
+
+          <button ion-button icon-start block color="dark" type="submit">
+              Diagnose
+    </button>
+
+
+        </form>
+
+        <div id="disNotf" style="display: none;"><h3  id="disNotfText">You have Cancer!</h3></div>
+  
+        <a ion-button icon-start block  href="https://google.com">For more info, visit here.</a>
+</ion-content>
+
+
