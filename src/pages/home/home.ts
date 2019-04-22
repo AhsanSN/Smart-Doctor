@@ -12,7 +12,7 @@ export class HomePage {
   diseases_list = ["pneumonia","failure_heart_congestive","dementia","dehydration"]
 form = [];
 
-symptoms_list_temp = ["cough"," fever"," shortness_of_breath"," rhonchus"," green_sputum","distress respiratory"," night sweat]","[fatigue","hypotension"," shortness_of_breath","cough"," wheezing"," jugular_venous_distention]","[fever"," unresponsiveness","lethargy","unconscious_state","bedridden","abdominal_tenderness"," hallucinations_auditory","rhonchus]","[fever","diarrhea","vomiting","nausea","lightheadedness","sensory_discomfort","lethargy","dizziness","hypotension"]
+symptoms_list_temp = [" shortness_of_breath"," green_sputum","distress respiratory"," night sweat","fatigue" ,"cough"," wheezing",   " jugular_venous_distention","unresponsiveness",   "lethargy","unconscious_state","bedridden","abdominal_tenderness",   " hallucinations_auditory","rhonchus","fever","diarrhea","vomiting",   "nausea","lightheadedness","sensory_discomfort","dizziness","hypotension"]
 ;
 
 symptoms_list = [
@@ -25,31 +25,27 @@ symptoms_list = [
     { val: 'night sweat', isChecked:false},
     { val: 'fatigue', isChecked:false},
     { val: 'hypotension', isChecked:false},
-    { val: 'shortness_of_breath', isChecked:false},
-    { val: 'cough', isChecked:false},
     { val: 'wheezing', isChecked:false},
     { val: 'jugular_venous_distention', isChecked:false},
-    { val: 'fever', isChecked:false},
     { val: 'unresponsiveness', isChecked:false},
-    { val: 'lethargy', isChecked:false},
     { val: 'unconscious_state', isChecked:false},
     { val: 'bedridden', isChecked:false},
     { val: 'abdominal_tenderness', isChecked:false},
     { val: 'hallucinations_auditory', isChecked:false},
-    { val: 'rhonchus]', isChecked:false},
-    { val: 'fever', isChecked:false},
     { val: 'diarrhea', isChecked:false},
     { val: 'vomiting', isChecked:false},
     { val: 'nausea', isChecked:false},
     { val: 'lightheadedness', isChecked:false},
     { val: 'sensory_discomfort', isChecked:false},
     { val: 'lethargy', isChecked:false},
-    { val: 'dizziness', isChecked:false},
-    { val: 'hypotension', isChecked:false}
+    { val: 'dizziness', isChecked:false}
   ];
 
   disea_symptoms = [
-    ["cough"," fever"," shortness_of_breath"," rhonchus"," green_sputum","distress respiratory"," night sweat"],["fatigue","hypotension"," shortness_of_breath","cough"," wheezing"," jugular_venous_distention"],["fever"," unresponsiveness","lethargy","unconscious_state","bedridden","abdominal_tenderness"," hallucinations_auditory","rhonchus"],["fever","diarrhea","vomiting","nausea","lightheadedness","sensory_discomfort","lethargy","dizziness","hypotension"]
+    ["cough"," fever"," shortness_of_breath"," rhonchus"," green_sputum","distress respiratory"," night sweat"],
+    ["fatigue","hypotension"," shortness_of_breath","cough"," wheezing"," jugular_venous_distention"],
+    ["fever"," unresponsiveness","lethargy","unconscious_state","bedridden","abdominal_tenderness"," hallucinations_auditory","rhonchus"],
+    ["fever","diarrhea","vomiting","nausea","lightheadedness","sensory_discomfort","lethargy","dizziness","hypotension"]
   ]
 
   constructor(public navCtrl: NavController) {
@@ -61,9 +57,11 @@ symptoms_list = [
     this.form =this.symptoms_list_temp;
     console.log("from", this.form)
     var disScore = [0,0,0,0]
-    for (var dis=0; dis<this.diseases_list.length; dis++){
-      for (var sym=0; sym<this.disea_symptoms[dis].length; sym++){
+
+    for (var dis=0; dis<=this.diseases_list.length; dis++){
+      for (var sym=0; sym<=this.disea_symptoms[dis].length; sym++){
         if(this.symptoms_list_temp.indexOf(this.disea_symptoms[dis][sym])>-1){
+          console.log("--", dis, sym, disScore)
           disScore[dis] +=1; 
         }
       }
@@ -101,7 +99,8 @@ symptoms_list = [
     var disScore = [0,0,0,0]
     for (var dis=0; dis<this.diseases_list.length; dis++){
       for (var sym=0; sym<this.disea_symptoms[dis].length; sym++){
-        if(this.symptoms_list_temp.indexOf(this.disea_symptoms[dis][sym])>-1){
+        if(this.form.indexOf(this.disea_symptoms[dis][sym])>-1){
+          console.log("--", this.form.indexOf(this.disea_symptoms[dis][sym]), dis, sym, disScore)
           disScore[dis] +=1; 
         }
       }
