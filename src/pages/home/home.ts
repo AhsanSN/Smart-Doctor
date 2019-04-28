@@ -52,6 +52,11 @@ symptoms_list = [
 
   }
 
+  openmaps(){
+    this.navCtrl.push("MapsPage")
+    console.log("open maps")
+  }
+
   submitSymptom(){
     console.log(this.symptoms_list);
     this.form =this.symptoms_list_temp;
